@@ -170,7 +170,7 @@ export default class ParticleEffectButton extends Component {
     anime({
       targets: { value: (status === 'hiding') ? 0 : 100 },
       value: (status === 'hiding') ? 100 : 0,
-      duration: (status === 'hiding') ? duration : 1,
+      duration: (status === 'hiding') ? 0 : duration,
       easing: easing,
       begin: onBegin,
       update: (anim) => {
@@ -179,7 +179,7 @@ export default class ParticleEffectButton extends Component {
           this.setState({ progress: value })
         })
 
-        if (duration) {
+        if ((status === 'hiding') && duration) {
           this._addParticles(value / 100)
         }
       }
