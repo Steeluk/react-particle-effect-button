@@ -60,7 +60,7 @@ export default class ParticleEffectButton extends Component {
     height: 0
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (props.hidden !== this.props.hidden) {
       const { status } = this.state
 
@@ -102,10 +102,10 @@ export default class ParticleEffectButton extends Component {
       wrapperStyles.transform = `${prop}(${px}px)`
       contentStyles.transform = `${prop}(${-px}px)`
     } else if (status === 'hidden') {
-      wrapperStyles.visibility = 'hidden'
-      canvasStyles.visibility = 'hidden'
+      wrapperStyles.display = 'none'
+      canvasStyles.display = 'none'
     } else if (status === 'normal') {
-      canvasStyles.visibility = 'hidden'
+      canvasStyles.display = 'none'
     }
 
     return (
