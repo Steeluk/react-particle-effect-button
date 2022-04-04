@@ -167,23 +167,25 @@ export default class ParticleEffectButton extends Component {
     this._canvas.height = this._rect.height + canvasPadding * 2
     this._ctx = this._canvas.getContext('2d')
 
-    anime({
-      targets: { value: (status === 'hiding') ? 0 : 100 },
-      value: (status === 'hiding') ? 100 : 0,
-      duration: (status === 'hiding') ? 0 : duration,
-      easing: easing,
-      begin: onBegin,
-      update: (anim) => {
-        const value = anim.animatables[0].target.value
-        setTimeout(() => {
-          this.setState({ progress: value })
-        })
+    if (status === 'hiding') {
+      anime({
+        targets: { value: (status === 'hiding') ? 0 : 100 },
+        value: (status === 'hiding') ? 100 : 0,
+        duration: duration,
+        easing: easing,
+        begin: onBegin,
+        update: (anim) => {
+          const value = anim.animatables[0].target.value
+          setTimeout(() => {
+            this.setState({ progress: value })
+          })
 
-        if ((status === 'hiding') && duration) {
-          this._addParticles(value / 100)
+          if (duration) {
+            this._addParticles(value / 100)
+          }
         }
-      }
-    })
+      })
+    } else this.setState({ progress: 100 })
   }
 
   _cycleStatus() {
