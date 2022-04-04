@@ -60,7 +60,7 @@ export default class ParticleEffectButton extends Component {
     height: 0
   }
 
-  UNSAFE_componentWillReceiveProps(props) {
+  getDerivedStateFromProps(props) {
     if (props.hidden !== this.props.hidden) {
       const { status } = this.state
 
@@ -170,7 +170,7 @@ export default class ParticleEffectButton extends Component {
     anime({
       targets: { value: (status === 'hiding') ? 0 : 100 },
       value: (status === 'hiding') ? 100 : 0,
-      duration: duration,
+      duration: (status === 'hiding') ? 0 : duration,
       easing: easing,
       begin: onBegin,
       update: (anim) => {
@@ -179,7 +179,7 @@ export default class ParticleEffectButton extends Component {
           this.setState({ progress: value })
         })
 
-        if (duration) {
+        if ((status === 'hiding') && duration) {
           this._addParticles(value / 100)
         }
       }
