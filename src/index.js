@@ -70,7 +70,9 @@ export default class ParticleEffectButton extends Component {
         this.setState({ status: 'showing' }, this._startAnimation)
       } else if (status === 'hiding' && !props.hidden) {
         // TODO: show button in middle of hiding animation
+        this.setState({ status: 'normal' }, this._startAnimation)
       } else if (status === 'showing' && props.hidden) {
+        this.setState({ status: 'hidden' }, this._startAnimation)
         // TODO: hide button in middle of showing animation
       }
     }
