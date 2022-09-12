@@ -1,6 +1,6 @@
 {
   "name": "react-particle-effect-button-example",
-  "homepage": "https://transitive-bullshit.github.io/react-particle-effect-button",
+  "homepage": "https://steeluk.github.io/react-particle-effect-button",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
@@ -8,7 +8,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-particle-effect-button": "link:..",
+    "react-particle-effect-button": "../",
     "react-scripts": "^1.1.1"
   },
   "scripts": {
